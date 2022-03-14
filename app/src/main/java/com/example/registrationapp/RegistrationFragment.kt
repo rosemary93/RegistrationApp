@@ -34,7 +34,8 @@ class RegistrationFragment : Fragment() {
             activity?.getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE)
         if (sharedPref != null) {
             if (sharedPref.contains("person${index - 1}")) {
-                Log.d("sssss", "shared pref not empty ")
+                Toast.makeText(activity,"shared pref not empty ",Toast.LENGTH_SHORT).show()
+               // Log.d("sssss", "shared pref not empty ")
             }
 
         }

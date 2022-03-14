@@ -36,7 +36,7 @@ class ShowInfoFragment : Fragment() {
         }
 
     }
-    fun setDataInSharedPref()
+    private fun setDataInSharedPref()
     {
         val sharedPreference =
             activity?.getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE)
