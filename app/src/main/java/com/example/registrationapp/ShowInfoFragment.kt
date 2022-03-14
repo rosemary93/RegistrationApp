@@ -17,6 +17,11 @@ class ShowInfoFragment : Fragment() {
     lateinit var personInfo:PersonInfo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments.let {
+            val jsonString=it!!.getString("personInfo")
+            val gson=Gson()
+            personInfo=gson.fromJson(jsonString,PersonInfo::class.java)
+        }
     }
 
     override fun onCreateView(
@@ -49,21 +54,22 @@ class ShowInfoFragment : Fragment() {
     }
 
     private fun initViews(){
-        personInfo= PersonInfo(requireArguments().getString("name", ""),
-            requireArguments().getString("username", ""),
-            requireArguments().getString("email", ""),
-            requireArguments().getString("password", ""),"")
         binding.textViewName.text = personInfo.name
         binding.textViewUsername.text = personInfo.username
         binding.textViewEmail.text = personInfo.email
         binding.textViewPassword.text = personInfo.password
-        val genderIsMale = requireArguments().getBoolean("genderIsMale")
+        binding.textViewGender.text=personInfo.gender
+
+       /* personInfo= PersonInfo(requireArguments().getString("name", ""),
+            requireArguments().getString("username", ""),
+            requireArguments().getString("email", ""),
+            requireArguments().getString("password", ""),"")*/
+        /*val genderIsMale = requireArguments().getBoolean("genderIsMale")
         personInfo.gender=if (genderIsMale) {
             "male"
         } else {
             "female"
-        }
-        binding.textViewGender.text=personInfo.gender
+        }*/
     }
 
 }
